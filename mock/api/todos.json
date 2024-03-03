@@ -1,0 +1,89 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "Complete coding exercise",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "Read a chapter of a book",
+      "completed": true
+    },
+    {
+      "id": "3",
+      "title": "Go for a run",
+      "completed": false
+    },
+    {
+      "id": "4",
+      "title": "Update resume",
+      "completed": false
+    },
+    {
+      "id": "5",
+      "title": "Watch coding tutorials",
+      "completed": true
+    },
+    {
+      "id": "6",
+      "title": "Organize desk and workspace",
+      "completed": false
+    },
+    {
+      "id": "7",
+      "title": "Learn a new programming language feature",
+      "completed": true
+    },
+    {
+      "id": "8",
+      "title": "Plan weekend activities",
+      "completed": false
+    },
+    {
+      "id": "9",
+      "title": "Write blog post",
+      "completed": false
+    },
+    {
+      "id": "10",
+      "title": "Practice mindfulness meditation",
+      "completed": true
+    },
+    {
+      "id": "11",
+      "title": "eat shit",
+      "completed": false
+    },
+    {
+      "id": "12",
+      "title": "drink beer",
+      "completed": false
+    },
+    {
+      "id": "13",
+      "title": "smoke hard",
+      "completed": false
+    },
+    {
+      "id": "14",
+      "title": "die soon",
+      "completed": false
+    },
+    {
+      "id": "15",
+      "title": "sleep well",
+      "completed": false
+    },
+    {
+      "id": "16",
+      "title": "fuck fuck fuck",
+      "completed": false
+    },
+    {
+      "id": "17",
+      "title": "shit aggressively",
+      "completed": false
+    }
+  ]
+}
