@@ -19,7 +19,7 @@ export default function PostsList() {
       </p>
     );
   } else if (isLoading) {
-    content = <h1 className="text-semibold text-2xl">Loading...</h1>;
+    content = <p className="font-semibold text-2xl">Loading...</p>;
   } else if (isSuccess) {
     content = (
       <ul className="p-4 flex flex-col space-y-4">
