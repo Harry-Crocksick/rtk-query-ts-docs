@@ -13,14 +13,14 @@ export const todosApi = createApi({
       providesTags: (result) =>
         result
           ? [
-              ...result.map(({ id }) => ({ type: "Todos", id } as const)),
-              { type: "Todos", id: "TODO-LIST" },
-            ]
+            ...result.map(({ id }) => ({ type: "Todos" as const, id })),
+            { type: "Todos", id: "TODO-LIST" },
+          ]
           : [{ type: "Todos", id: "TODO-LIST" }],
     }),
-    getEachTodo: builder.query<TodoTypes, string | void>({
+    getEachTodo: builder.query<TodoTypes, string>({
       query: (id) => `/todos/${id}`,
-      providesTags: ["Todos"],
+      providesTags: (_result, _error, id) => [{ type: "Todos", id }],
     }),
     addTodo: builder.mutation<TodoTypes, Partial<TodoTypes>>({
       query: (todo) => ({
@@ -40,7 +40,7 @@ export const todosApi = createApi({
       },
       invalidatesTags: [{ type: "Todos", id: "TODO-LIST" }, "Todos"],
     }),
-    deleteTodo: builder.mutation<{ success: boolean; id: number }, string>({
+    deleteTodo: builder.mutation<TodoTypes, string>({
       query: (id) => ({
         url: `/todos/${id}`,
         method: "DELETE",

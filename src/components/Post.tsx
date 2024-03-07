@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   useGetEachTodoQuery,
@@ -16,9 +16,13 @@ export default function Post() {
     isError,
     error,
     isLoading,
-  } = useGetEachTodoQuery(postId);
+  } = useGetEachTodoQuery(postId!);
   const [deleteTodo, { isLoading: isDeleteLoading }] = useDeleteTodoMutation();
   const [updateTodo, { isLoading: isUpdateLoading }] = useUpdateTodoMutation();
+
+  useEffect(() => {
+    console.log(postId);
+  }, [postId]);
 
   let content;
   if (isError) {
@@ -30,7 +34,8 @@ export default function Post() {
   } else if (isSuccess) {
     content = (
       <EditableTodo
-        todo={todo}
+        title={todo.title}
+        id={todo.id}
         onUpdateTodo={updateTodo}
         onDeleteTodo={deleteTodo}
         isUpdateLoading={isUpdateLoading}
@@ -52,18 +57,23 @@ export default function Post() {
 }
 
 function EditableTodo({
-  todo,
+  title,
+  id,
   onUpdateTodo,
   onDeleteTodo,
   isUpdateLoading = false,
   isDeleteLoading = false,
 }: EditParamsTypes) {
-  const [input, setInput] = useState(todo.title);
+  const [input, setInput] = useState(title);
   const [isEditMode, setIsEditMode] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    console.log(input);
+  }, [input]);
+
   function handleUpdateTodo() {
-    onUpdateTodo({ id: todo.id, title: input });
+    onUpdateTodo({ id, title: input });
     setIsEditMode(false);
   }
 
@@ -77,7 +87,7 @@ function EditableTodo({
           onChange={(e) => setInput(e.target.value)}
         />
       ) : (
-        <h1>{todo.title}</h1>
+        <h1>{title}</h1>
       )}
       <div className="flex items-center space-x-4">
         {isEditMode ? (
@@ -105,7 +115,7 @@ function EditableTodo({
         ) : (
           <button
             onClick={() => {
-              onDeleteTodo(todo.id);
+              onDeleteTodo(id);
               navigate("/");
             }}
             className="max-w-max px-2 py-1 bg-red-500 rounded-md text-white font-semibold"

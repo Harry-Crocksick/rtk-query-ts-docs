@@ -5,7 +5,8 @@ export interface TodoTypes {
 }
 
 export interface EditParamsTypes {
-  todo: TodoTypes;
+  title: TodoTypes['title'];
+  id: TodoTypes['id'];
   onUpdateTodo: (param: Omit<TodoTypes, "completed">) => void;
   onDeleteTodo: (id: string) => void;
   isUpdateLoading?: boolean;
